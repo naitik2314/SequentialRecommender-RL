@@ -1,4 +1,4 @@
-# Sequential Recommender System with Reinforcement Learning
+# Sequential Recommender System with Reinforcement Learning Test
 
 A research-oriented implementation of a sequential recommendation model using reinforcement learning techniques. The project provides environment simulations, model training pipelines, and evaluation utilities.
 
