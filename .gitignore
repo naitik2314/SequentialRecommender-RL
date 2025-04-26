@@ -6,3 +6,5 @@ data/raw/ml-25m/movies.csv
 data/raw/ml-25m/ratings.csv
 data/raw/ml-25m/tags.csv
 data/raw/ml-25m/README.txt
+data/processed/movies.csv
+data/processed/ratings.csv
