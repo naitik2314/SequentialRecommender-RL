@@ -14,6 +14,7 @@ A research-oriented implementation of a sequential recommendation model using re
     - [Using `virtualenv`](#using-virtualenv)
     - [Using `conda`](#using-conda)
   - [Installing Dependencies](#installing-dependencies)
+  - [Download Data](#download-data)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
@@ -72,6 +73,22 @@ Once the environment is active, install required packages:
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
+```
+
+### Download Data
+
+```bash
+mkdir -p data/raw/ml-25m
+wget -P data/raw/ml-25m http://files.grouplens.org/datasets/movielens/ml-25m.zip
+unzip data/raw/ml-25m/ml-25m.zip -d data/raw/ml-25m
+```
+
+#### Windows PowerShell
+
+```powershell
+New-Item -ItemType Directory -Force -Path data\\raw\\ml-25m
+Invoke-WebRequest -Uri http://files.grouplens.org/datasets/movielens/ml-25m.zip -OutFile data\\raw\\ml-25m\\ml-25m.zip
+Expand-Archive -Path data\\raw\\ml-25m\\ml-25m.zip -DestinationPath data\\raw\\ml-25m
 ```
 
 ---
