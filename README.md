@@ -95,12 +95,17 @@ Expand-Archive -Path data\\raw\\ml-25m\\ml-25m.zip -DestinationPath data\\raw\\m
 
 ## Usage
 
-1. Configure your simulation parameters in the provided config files or scripts.
-2. Run the training script:
+1. Preprocess the data:
+   ```bash
+   python src/data_preprocess.py
+   ```
+   _Cleans and prepares the raw MovieLens dataset._
+2. Configure your simulation parameters in the provided config files or scripts.
+3. Run the training script:
    ```bash
    python train.py --config configs/default.yaml
    ```
-3. Evaluate a trained model:
+4. Evaluate a trained model:
    ```bash
    python evaluate.py --model-path path/to/model.pt
    ```
