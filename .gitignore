@@ -8,3 +8,5 @@ data/raw/ml-25m/tags.csv
 data/raw/ml-25m/README.txt
 data/processed/movies.csv
 data/processed/ratings.csv
+data/processed/movies_enriched.csv
+data/processed/ratings_clean.csv
