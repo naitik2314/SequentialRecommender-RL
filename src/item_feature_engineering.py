@@ -7,7 +7,7 @@ import numpy as np
 def build_item_features(raw_path: str, processed_path: str):
     """
     Reads genome-scores.csv and genome-tags.csv from raw_path,
-    pivots into an [num_items × num_tags] relevance matrix (indexed by movieId),
+    pivots into an [num_movies × num_tags] relevance matrix (indexed by movieId),
     renames columns to human-readable tag names, and saves as item_features.npy.
     """
     # Input files
@@ -16,7 +16,7 @@ def build_item_features(raw_path: str, processed_path: str):
 
     # Load
     scores = pd.read_csv(scores_path)      # columns: movieId, tagId, relevance
-    tags   = pd.read_csv(tags_path)        # columns: tagId, tagName
+    tags   = pd.read_csv(tags_path)        # columns: tagId, tag
 
     # Pivot into item×tag matrix
     item_tag = scores.pivot(
@@ -25,9 +25,9 @@ def build_item_features(raw_path: str, processed_path: str):
         values='relevance'
     ).fillna(0)
 
-    # Map tagId → tagName for column labels
-    tag_map = tags.set_index('tagId')['tagName']
-    item_tag.columns = [tag_map[tag] for tag in item_tag.columns]
+    # Map tagId → tag (column labels)
+    tag_map = tags.set_index('tagId')['tag']
+    item_tag.columns = [tag_map[tag_id] for tag_id in item_tag.columns]
 
     # Convert to numpy and save
     features = item_tag.values  # shape: [num_movies, num_tags]

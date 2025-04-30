@@ -10,3 +10,4 @@ data/processed/movies.csv
 data/processed/ratings.csv
 data/processed/movies_enriched.csv
 data/processed/ratings_clean.csv
+data/processed/item_features.npy
