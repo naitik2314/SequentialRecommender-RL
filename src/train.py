@@ -56,7 +56,8 @@ def train(
 
 if __name__ == '__main__':
     # hyperparams
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    #device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = 'cpu'
     env = UserSimEnv()
     state_dim = env.observation_space.shape[0]
     num_actions = env.action_space.n
