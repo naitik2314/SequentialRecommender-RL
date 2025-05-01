@@ -11,3 +11,7 @@ data/processed/ratings.csv
 data/processed/movies_enriched.csv
 data/processed/ratings_clean.csv
 data/processed/item_features.npy
+models/__pycache__/dqn_agent.cpython-39.pyc
+models/__pycache__/network.cpython-39.pyc
+runs/experiment1/events.out.tfevents.1746065427.pop-os.14837.0
+simulation/__pycache__/user_simulator.cpython-39.pyc

@@ -105,6 +105,7 @@ Expand-Archive -Path data\\raw\\ml-25m\\ml-25m.zip -DestinationPath data\\raw\\m
    ```bash
    python train.py --config configs/default.yaml
    ```
+   **Note**: Before running, open `src/train.py` and uncomment the line that sets `device` to use the available GPU (e.g. `device = torch.device("cuda" if torch.cuda.is_available() else "cpu")`) and comment out the hardcoded `device = "cpu"` line.
 4. Evaluate a trained model:
    ```bash
    python evaluate.py --model-path path/to/model.pt

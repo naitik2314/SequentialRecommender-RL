@@ -6,6 +6,10 @@ import torch
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
 
+import os, sys
+# Add the parent directory (project root) to PYTHONPATH
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from simulation.user_simulator import UserSimEnv
 from models.dqn_agent import DQNAgent
 
@@ -72,7 +76,8 @@ def train(
 
 if __name__ == '__main__':
     # choose device
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    #device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    device = 'cpu'
 
     # init env & agent
     env = UserSimEnv()
