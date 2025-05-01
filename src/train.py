@@ -3,15 +3,10 @@
 import os
 import gym
 import torch
-import numpy as np
-from torch.utils.tensorboard import SummaryWriter
-
-import os, sys
-# Add the parent directory (project root) to PYTHONPATH
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from simulation.user_simulator import UserSimEnv
 from models.dqn_agent import DQNAgent
+from collections import deque
+import numpy as np
 
 def train(
     env,
@@ -19,12 +14,8 @@ def train(
     num_episodes=500,
     max_steps_per_episode=None,
     log_interval=10,
-    save_path='models/dqn.pth',
-    tb_logdir='runs/experiment1'
+    save_path='models/dqn.pth'
 ):
-    # Set up TensorBoard writer
-    writer = SummaryWriter(log_dir=tb_logdir)
-
     rewards_history = []
     losses_history = []
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
@@ -50,40 +41,30 @@ def train(
             if max_steps_per_episode and steps >= max_steps_per_episode:
                 break
 
-        # Record histories
-        avg_loss = float(np.mean(ep_losses)) if ep_losses else 0.0
         rewards_history.append(ep_reward)
-        losses_history.append(avg_loss)
+        losses_history.append(np.mean(ep_losses) if ep_losses else 0.0)
 
-        # TensorBoard logs
-        writer.add_scalar('Reward/episode', ep_reward, ep)
-        writer.add_scalar('Loss/episode', avg_loss, ep)
-        writer.add_scalar('Epsilon/decay', agent.epsilon, ep)
-
-        # Console log
         if ep % log_interval == 0:
-            recent_r = np.mean(rewards_history[-log_interval:])
-            recent_l = np.mean(losses_history[-log_interval:])
-            print(f"Ep {ep}/{num_episodes} — avg_reward: {recent_r:.2f}, "
-                  f"avg_loss: {recent_l:.4f}, ε: {agent.epsilon:.3f}")
+            avg_r = np.mean(rewards_history[-log_interval:])
+            avg_l = np.mean(losses_history[-log_interval:])
+            print(f"Ep {ep}/{num_episodes} — avg_reward: {avg_r:.2f}, avg_loss: {avg_l:.4f}, ε: {agent.epsilon:.3f}")
 
-    # save the trained Q-network
+    # save trained model
     torch.save(agent.q_net.state_dict(), save_path)
-    print(f"✅ Training complete. Model saved to {save_path}")
-
-    writer.close()
+    print(f"Training complete. Model saved to {save_path}")
     return rewards_history, losses_history
 
 if __name__ == '__main__':
-    # choose device
-    #device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    device = 'cpu'
-
-    # init env & agent
+    # hyperparams
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     env = UserSimEnv()
     state_dim = env.observation_space.shape[0]
     num_actions = env.action_space.n
-    agent = DQNAgent(state_dim=state_dim, num_actions=num_actions, device=device)
 
-    # kick off training
+    agent = DQNAgent(
+        state_dim=state_dim,
+        num_actions=num_actions,
+        device=device,
+    )
+
     train(env, agent)
