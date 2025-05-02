@@ -1,7 +1,5 @@
 # Sequential Recommender System with Reinforcement Learning
 
-A research-oriented implementation of a sequential recommendation model using reinforcement learning techniques. The project provides environment simulations, model training pipelines, and evaluation utilities.
-
 A research-oriented implementation of a sequential recommendation model leveraging deep reinforcement learning techniques to optimize long-term user engagement and diversity.
 
 ## Table of Contents
