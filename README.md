@@ -45,7 +45,7 @@ A research-oriented implementation of a sequential recommendation model leveragi
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/SequentialRecommender-RL.git
+git clone https://github.com/naitik2314/SequentialRecommender-RL.git
 cd SequentialRecommender-RL
 ```
 
@@ -113,12 +113,12 @@ device: cuda
 
 ### Preprocessing Pipeline
 ```bash
-python src/data_preprocess.py --config configs/default.yaml
+python src/data_preprocess.py 
 ```
 
 ### Training
 ```bash
-python src/train.py --config configs/default.yaml
+python src/train.py 
 ```
 
 **Note**: Ensure GPU is enabled in `src/train.py`:
