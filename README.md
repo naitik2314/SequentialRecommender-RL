@@ -149,7 +149,6 @@ tensorboard --logdir runs
 
 ```plaintext
 SequentialRecommender-RL/
-├── configs/                 # YAML configuration files
 ├── data/                    # Raw and processed datasets
 │   ├── raw/                 # Downloaded MovieLens datasets
 │   └── processed/           # Cleaned and preprocessed data
@@ -160,14 +159,6 @@ SequentialRecommender-RL/
 ├── requirements.txt         # Python dependencies
 └── README.md                # Project overview and setup instructions
 ``` 
-
-## Experiments & Reproducibility
-
-- Re-run experiments with different seeds:
-  ```bash
-  python src/train.py --config configs/experiment1.yaml
-  ```
-- Compare performance metrics via TensorBoard or exported CSV logs.
 
 ## Contributing
 
@@ -191,5 +182,5 @@ If you use this implementation in your research, please cite:
 ## Contact
 
 Project maintainers:
-- Naitik <naitik@example.com>
-- Issues: https://github.com/yourusername/SequentialRecommender-RL/issues
+- Naitik <naitik@wayne.edu>
+- Issues: https://github.com/naitik2314/SequentialRecommender-RL/issues
