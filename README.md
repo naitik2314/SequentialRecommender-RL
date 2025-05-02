@@ -33,8 +33,6 @@ A research-oriented implementation of a sequential recommendation model leveragi
 - Support for diversity-promoting reward signals
 - Customizable user behavior simulator
 - Modular codebase for easy experimentation
-- TensorBoard integration for training visualization
-- Configuration-driven experiments via YAML
 
 ## Prerequisites
 
