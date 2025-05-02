@@ -17,3 +17,4 @@ runs/experiment1/events.out.tfevents.1746065427.pop-os.14837.0
 simulation/__pycache__/user_simulator.cpython-39.pyc
 runs/experiment1/events.out.tfevents.1746067056.pop-os.4925.0
 models/dqn.pth
+models/rl_diversity_dqn.pth
